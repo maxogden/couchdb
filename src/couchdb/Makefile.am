@@ -86,11 +86,7 @@ source_files = \
     couch_db_updater.erl \
     couch_work_queue.erl
 
-<<<<<<< HEAD
-EXTRA_DIST = $(source_files) couch_db.hrl couch_js_functions.hrl
-=======
-EXTRA_DIST = $(source_files) couch_db.hrl couch_spatial.hrl
->>>>>>> geocouch
+EXTRA_DIST = $(source_files) couch_db.hrl couch_js_functions.hrl couch_spatial.hrl
 
 compiled_files = \
     couch.app \
@@ -210,10 +206,6 @@ endif
 
 # $(ERL) -noshell -run edoc_run files [\"$<\"]
 
-<<<<<<< HEAD
-%.beam: %.erl couch_db.hrl couch_js_functions.hrl
-=======
-%.beam: %.erl couch_db.hrl couch_spatial.hrl
->>>>>>> geocouch
+%.beam: %.erl couch_db.hrl couch_js_functions.hrl couch_spatial.hrl
 	$(ERLC) $(ERLC_FLAGS) ${TEST} $<;
 
