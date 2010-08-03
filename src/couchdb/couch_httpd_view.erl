@@ -511,8 +511,13 @@ apply_default_helper_funs(
 apply_default_helper_funs(
         #reduce_fold_helper_funs{
             start_response = StartResp,
+<<<<<<< HEAD
             send_row = SendRow
         }=Helpers) ->
+=======
+            send_row = SendRow}
+        =Helpers) ->
+>>>>>>> geocouch
     StartResp2 = case StartResp of
     undefined -> fun json_reduce_start_resp/4;
     _ -> StartResp
@@ -558,6 +563,7 @@ make_end_key_option(
 
 json_view_start_resp(Req, Etag, TotalViewCount, Offset, _Acc, UpdateSeq) ->
     {ok, Resp} = start_json_response(Req, 200, [{"Etag", Etag}]),
+<<<<<<< HEAD
     BeginBody = case couch_httpd:qs_value(Req, "update_seq") of
     "true" ->
         io_lib:format(
@@ -569,6 +575,12 @@ json_view_start_resp(Req, Etag, TotalViewCount, Offset, _Acc, UpdateSeq) ->
                 "{\"total_rows\":~w,\"offset\":~w,\"rows\":[\r\n",
                 [TotalViewCount, Offset])
     end,
+=======
+    BeginBody = io_lib:format(
+            "{\"total_rows\":~w,\"update_seq\":~w,"
+            "\"offset\":~w,\"rows\":[\r\n",
+            [TotalViewCount, UpdateSeq, Offset]),
+>>>>>>> geocouch
     {ok, Resp, BeginBody}.
 
 send_json_view_row(Resp, Db, {{Key, DocId}, Value}, IncludeDocs, RowFront) ->

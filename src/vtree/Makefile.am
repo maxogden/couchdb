@@ -10,4 +10,29 @@
 ## License for the specific language governing permissions and limitations under
 ## the License.
 
-SUBDIRS = couchdb erlang-oauth etap ibrowse mochiweb vtree
+vtreeebindir = $(localerlanglibdir)/vtree/ebin
+
+vtree_file_collection = \
+    vtree.erl \
+    vtreeviz.erl \
+    run_vtreeviz.erl \
+    vtree_test.erl \
+    vtree_insbench.erl
+
+vtreeebin_make_generated_file_list = \
+    vtree.beam \
+    vtreeviz.beam \
+    run_vtreeviz.beam \
+    vtree_test.beam \
+    vtree_insbench.beam
+
+vtreeebin_DATA = \
+    $(vtreeebin_make_generated_file_list)
+
+EXTRA_DIST =  $(vtree_file_collection)
+
+CLEANFILES = \
+    $(vtreeebin_make_generated_file_list)
+
+%.beam: %.erl
+	$(ERLC) $(ERLC_FLAGS) $<

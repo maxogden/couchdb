@@ -62,6 +62,7 @@ stats_aggregator={couch_stats_aggregator, start, []}
 stats_collector={couch_stats_collector, start, []}
 uuids={couch_uuids, start, []}
 auth_cache={couch_auth_cache, start_link, []}
+spatial_manager={couch_spatial, start_link, []}
 
 [httpd_global_handlers]
 / = {couch_httpd_misc_handlers, handle_welcome_req, <<"Welcome">>}
@@ -99,6 +100,8 @@ _list = {couch_httpd_show, handle_view_list_req}
 _info = {couch_httpd_db,   handle_design_info_req}
 _rewrite = {couch_httpd_rewrite, handle_rewrite_req}
 _update = {couch_httpd_show, handle_doc_update_req}
+_spatial = {couch_httpd_spatial, handle_spatial_req}
+_spatiallist = {couch_httpd_spatial_list, handle_spatial_list_req}
 
 [uuids]
 ; Known algorithms:
